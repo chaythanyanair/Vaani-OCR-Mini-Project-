@@ -26,7 +26,7 @@ public class LanguageActivity extends Activity {
 		public static File imgFile;
 		public Uri fileUri;
 		ImageView showImg;
-		private Spinner spinner1;
+		//private Spinner spinner1;
 		public static File fileName;
 		String value;
 		Button button;
@@ -52,27 +52,6 @@ public class LanguageActivity extends Activity {
 	        	@Override
 		        public void onClick(View v) { gotoFinalActivity();}});
 		}
-			
-	
-		 public void addListenerOnSpinnerItemSelection() {
-		    	spinner1 = (Spinner) findViewById(R.id.spinner1);
-		    	ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.language_arrays, android.R.layout.simple_spinner_item);
-		    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		    	// Apply the adapter to the spinner
-		    	spinner1.setAdapter(adapter);
-		    	spinner1.setOnItemSelectedListener(new OnItemSelectedListener(){
-		    		public void onItemSelected(AdapterView<?> parent, View view, int pos,long id) {
-		    			Toast.makeText(parent.getContext(),"OnItemSelectedListener : " + parent.getItemAtPosition(pos).toString(),Toast.LENGTH_SHORT).show();
-		    			//value = spinner1.getSelectedItem().toString();
-				    	
-		    		}
-		    		  @Override
-		    		  public void onNothingSelected(AdapterView<?> arg0) {
-		    			// TODO Auto-generated method stub
-		    		  }
-		    	});
-		    	
-    		}
 		
 		 public void gotoFinalActivity(){
 			 Intent first = new Intent(this, FinalActivity.class);

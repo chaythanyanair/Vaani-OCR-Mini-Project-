@@ -27,6 +27,6 @@
 	    <item>German</item> 
 	</string-array>
 	<string name="result">Translation</string>
-    <string name="sub">Submit</string>
+    <string name="sub">Translate</string>
 
 </resources>

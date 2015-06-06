@@ -368,13 +368,13 @@ int id action_menu_presenter 0x7f0a0006
 int id action_mode_bar 0x7f0a0039
 int id action_mode_bar_stub 0x7f0a0038
 int id action_mode_close_button 0x7f0a002b
-int id action_settings 0x7f0a0055
+int id action_settings 0x7f0a0054
 int id activity_chooser_view_content 0x7f0a002c
 int id always 0x7f0a0014
 int id beginning 0x7f0a001b
 int id bengali 0x7f0a001e
-int id button3 0x7f0a0054
-int id button4 0x7f0a0051
+int id button3 0x7f0a0053
+int id button4 0x7f0a0050
 int id checkbox 0x7f0a0034
 int id collapseActionView 0x7f0a0015
 int id decor_content_parent 0x7f0a003a
@@ -425,7 +425,6 @@ int id shortcut 0x7f0a0035
 int id showCustom 0x7f0a0010
 int id showHome 0x7f0a0011
 int id showTitle 0x7f0a0012
-int id spinner1 0x7f0a004f
 int id split_action_bar 0x7f0a0004
 int id submit_area 0x7f0a0047
 int id tabMode 0x7f0a000c
@@ -436,9 +435,9 @@ int id textView2 0x7f0a004e
 int id title 0x7f0a0032
 int id up 0x7f0a0001
 int id useLogo 0x7f0a0013
-int id viewImage 0x7f0a0053
-int id viewImage1 0x7f0a0052
-int id view_photo 0x7f0a0050
+int id viewImage 0x7f0a0052
+int id viewImage1 0x7f0a0051
+int id view_photo 0x7f0a004f
 int id withText 0x7f0a0018
 int id wrap_content 0x7f0a0009
 int integer abc_config_activityDefaultDur 0x7f090001

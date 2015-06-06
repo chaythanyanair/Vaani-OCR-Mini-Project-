@@ -1,7 +1,5 @@
 package com.example.arch.vaani.ocr;
 
-//import static android.support.v4.app.FragmentActivity.TAG;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -22,9 +20,9 @@ import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.googlecode.tesseract.android.TessBaseAPI;
-//import com.mashape.p.hablaadictionarytranslationhablaav1.http.response.HttpResponse;
+
+
 public class FinalActivity extends Activity {
 	TextView recognised;
 	TextView translated;
@@ -45,7 +43,6 @@ public class FinalActivity extends Activity {
 		String myRef = this.getIntent().getStringExtra("name");
 		choice= this.getIntent().getStringExtra("choice");
 	    imgFile = new  File(myRef);
-	   //String choice = this.getIntent().getStringExtra("choice");
 	    String path1 =imgFile.getAbsolutePath();
 	    Bitmap bitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
 	    imageDisp = (ImageView) findViewById(R.id.imageId);
@@ -94,10 +91,10 @@ public class FinalActivity extends Activity {
    	    
    	 imageDisp.setImageBitmap(bitmap);
    	 
-   	//Transliterator transliterator = new Transliterator(this.getContext());
+   	
 }
 	
-public String correctText(String recognizedText)
+public String correctText(String recognizedText) // swap vowels
 {
 	Context context = getApplicationContext();
 	int duration = Toast.LENGTH_SHORT;
@@ -141,7 +138,7 @@ public String correctText(String recognizedText)
 public String readTxt(String recognizedText)
 {
 	BufferedReader reader;
-	String line = "Sorry.. Unable to translate text!";
+	String line = "Sorry Unable to translate text!";
 	String[] array;
    	AssetManager assetManager = getAssets();
    	InputStream in;
@@ -169,7 +166,7 @@ public String readTxt(String recognizedText)
 		Log.e("translation", "error opening assets", e);
 	}
     	 
-   	return "Sorry couldnt translate!!";
+   	return "Sorry unbale to translate!";
 }
 	
 	
