@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.util.Arrays;
+import java.util.ArrayList;
 
 import android.app.Activity;
 import android.content.Context;
@@ -20,6 +20,7 @@ import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.googlecode.tesseract.android.TessBaseAPI;
 
 
@@ -35,9 +36,11 @@ public class FinalActivity extends Activity {
 	public static String DATA_PATH = Environment.getExternalStorageDirectory().toString() + "/Vaani";
 	public static final String lang="mal";
 	private static final String TAG = "FinalActivity.java";
+	private static ArrayList<String> charList = new ArrayList<String>(0);
 	 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		charList.clear();
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_final);
 		String myRef = this.getIntent().getStringExtra("name");
@@ -131,10 +134,47 @@ public String correctText(String recognizedText) // swap vowels
         }
         text= builder.toString();
         
-	return text;
+	return coCorrect(text);
 	
 }
-
+public String coCorrect(String recognizedText) // swap vowels
+{
+	int len,i,j,p,k = 0;
+	String temp;
+	StringBuilder builder;
+	String text;
+	String [] c = new String[1000];
+	String [] a ={"[", "_", "]", ";", ":", "!", "@","#","$", "%", "^","&","(",")","/","|","{","}","'"};
+	len= recognizedText.length();
+    c = recognizedText.split("");
+    int clength=c.length;
+    for(i=0;i<clength;i++)
+    {
+        p=0;
+        for(j=0;j<a.length;j++)
+        {
+            if(a[j].equals(c[i]))
+            {
+                    
+	              p=1;
+	              break;
+            }
+        }
+        
+        if(p!=1)
+        {
+            charList.add(c[i]);
+            
+        }
+    }		    
+	builder = new StringBuilder();
+    for(String s:charList) {
+            builder.append(s);
+        }
+        text= builder.toString();
+        
+	return text;
+}
 /** Function to find English translation of the recognized text */
 public String readTxt(String recognizedText)
 {
