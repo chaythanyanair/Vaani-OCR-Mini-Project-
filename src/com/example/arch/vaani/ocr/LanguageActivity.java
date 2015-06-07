@@ -17,16 +17,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
-//import android.content.Intent;
-//import android.view.View;
-//import android.widget.Button;
+
 
 public class LanguageActivity extends Activity {
 
 		public static File imgFile;
 		public Uri fileUri;
 		ImageView showImg;
-		//private Spinner spinner1;
 		public static File fileName;
 		String value;
 		Button button;
@@ -38,7 +35,7 @@ public class LanguageActivity extends Activity {
 			String myRef = this.getIntent().getStringExtra("name");
 		    imgFile = new  File(myRef);
 		   
-		    /*Display Image*/
+		    /** Display Image */
 	        if(imgFile.exists()){
 	        	Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
 	        	BitmapFactory.Options options = new BitmapFactory.Options();
@@ -46,13 +43,13 @@ public class LanguageActivity extends Activity {
 	       		ImageView showImg = (ImageView) findViewById(R.id.view_photo);
 	        	showImg.setImageBitmap(myBitmap);
 	        	}
-	        /*Implement submit button**/
+	        /** Implement submit button  **/
 	        button = (Button)findViewById(R.id.button4);
 	        button.setOnClickListener(new OnClickListener() {
 	        	@Override
 		        public void onClick(View v) { gotoFinalActivity();}});
 		}
-		
+		/** Goto FinalActivity on Submit */
 		 public void gotoFinalActivity(){
 			 Intent first = new Intent(this, FinalActivity.class);
 			 first.putExtra("name",imgFile.toString());

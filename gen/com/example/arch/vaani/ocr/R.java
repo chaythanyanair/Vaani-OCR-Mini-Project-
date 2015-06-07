@@ -1680,9 +1680,10 @@ containing a value of this type.
         public static final int bg=0x7f020037;
         public static final int bg2=0x7f020038;
         public static final int button1=0x7f020039;
-        public static final int camera=0x7f02003a;
-        public static final int ic_launcher=0x7f02003b;
-        public static final int upload=0x7f02003c;
+        public static final int button2=0x7f02003a;
+        public static final int camera=0x7f02003b;
+        public static final int ic_launcher=0x7f02003c;
+        public static final int upload=0x7f02003d;
     }
     public static final class id {
         public static final int action_bar=0x7f0a003c;

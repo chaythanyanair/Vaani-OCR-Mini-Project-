@@ -41,17 +41,19 @@ public class MainActivity extends Activity {
 	    });
 	    
 	    gallery.setOnClickListener(new View.OnClickListener() {
+	    	/** Open Gallery */
 	    	@Override
-	    	public void onClick(View v) { /*Open Gallery*/
+	    	public void onClick(View v) { 
 	    	Intent intent = new Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 	    	startActivityForResult(Intent.createChooser(intent,"Complete action using"), 2);
 	    	}
 	    	
 	    });
 	}
+	/** Open External Storage directory */
 	public void open(){
 	      Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-	      fileUri = getOutputImageFileUri(); // create a file to save the image
+	      fileUri = getOutputImageFileUri(); 
 		  intent.putExtra(android.provider.MediaStore.EXTRA_OUTPUT, fileUri);
 		  if (intent.resolveActivity(getPackageManager()) != null) {
 		  	startActivityForResult(intent, 1);
@@ -69,13 +71,14 @@ public class MainActivity extends Activity {
         {
             imageStorageDir.mkdirs();// Create the storage directory if it does not exist
         }
-	    // Create a media file name
 	    String imgName = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
 	    File imageFile;
 	    imageFile = new File(imageStorageDir.getPath() + File.separator + "IMG_"+ imgName +".png");
 	    return imageFile;
 	}
+	
 	@Override
+	/** Goto SecondActivity */
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 	     super.onActivityResult(requestCode, resultCode, data);
 		 if (requestCode==1 && resultCode == RESULT_OK) { 
@@ -95,6 +98,7 @@ public class MainActivity extends Activity {
 			 }
 		 }
 	}
+	/** Get ImageUri */
 	public String getPath(Uri uri) {
         String[] projection = { MediaStore.Images.Media.DATA };
         Cursor cursor = getContentResolver().query(uri, projection, null, null, null);

@@ -52,7 +52,6 @@ public class SecondActivity extends Activity {
         	}
         button = (Button)findViewById(R.id.button3);
         button1= (Button)findViewById(R.id.button4);
-        //button2= (Button)findViewById(R.id.button5);
 		button.setOnClickListener(new OnClickListener() {
 		    	@Override
 		        public void onClick(View v) { 
@@ -63,7 +62,7 @@ public class SecondActivity extends Activity {
 		    		        for (int i = 0; i < children.length; i++) {
 		    		            new File(dir, children[i]).delete();
 		    		        }
-		    		    }
+		    		 }
 
 
 		    		picUri=Uri.fromFile(imgFile);
@@ -100,27 +99,29 @@ public class SecondActivity extends Activity {
 	}
 	
 	
-	
+	/** Goto LanguageActivity on Next */
 	public void next()
 	{ 
 		Uri temp = getImageUri(getApplicationContext(),myBitmap);
 		selectedImagePath = getPath(temp);
-		Intent hello = new Intent(this, LanguageActivity.class);
-		hello.putExtra("name", selectedImagePath);
-		startActivity(hello);
+		Intent next = new Intent(this, LanguageActivity.class);
+		next.putExtra("name", selectedImagePath);
+		startActivity(next);
 	}
-	
+	/** GetPath of passed Bitmap */
 	public Uri getImageUri(Context inContext, Bitmap inImage) {
 		  ByteArrayOutputStream bytes = new ByteArrayOutputStream();
 		  inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
 		  String path = Images.Media.insertImage(inContext.getContentResolver(), inImage, "Title", null);
 		  return Uri.parse(path);
 		}
+	
+	/** Goto language Activity on Crop */
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-      // TODO Auto-generated method stub
-     super.onActivityResult(requestCode, resultCode, data);
-	 if (requestCode == PIC_CROP && resultCode == RESULT_OK) {
+    // TODO Auto-generated method stub
+    super.onActivityResult(requestCode, resultCode, data);
+	if (requestCode == PIC_CROP && resultCode == RESULT_OK) {
 		if(data!=null){
 			Uri selectedImageUri = data.getData();
 			selectedImagePath = getPath(selectedImageUri);

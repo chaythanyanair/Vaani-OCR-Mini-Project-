@@ -79,21 +79,21 @@ public class FinalActivity extends Activity {
 				}
 		    	
 		    }
-		    TessBaseAPI baseApi = new TessBaseAPI();
+		   TessBaseAPI baseApi = new TessBaseAPI();
 		   baseApi.init(DATA_PATH, lang);
 		   baseApi.setImage(bitmap);
 		   String recognizedText = baseApi.getUTF8Text();
 		   recognizedText=correctText(recognizedText);
-   	    recognised=(TextView)findViewById(R.id.textView1);
-   	    translated=(TextView)findViewById(R.id.textView2);
-   	    recognised.setText(recognizedText);
-   	    translated.setText(readTxt(recognizedText));
-   	    
-   	 imageDisp.setImageBitmap(bitmap);
+   	       recognised=(TextView)findViewById(R.id.textView1);
+   	       translated=(TextView)findViewById(R.id.textView2);
+   	       recognised.setText(recognizedText);
+   	       translated.setText(readTxt(recognizedText));
+   	       imageDisp.setImageBitmap(bitmap);
    	 
    	
 }
-	
+
+/** Function to correct vowel position */
 public String correctText(String recognizedText) // swap vowels
 {
 	Context context = getApplicationContext();
@@ -134,18 +134,22 @@ public String correctText(String recognizedText) // swap vowels
 	return text;
 	
 }
-	
+
+/** Function to find English translation of the recognized text */
 public String readTxt(String recognizedText)
 {
 	BufferedReader reader;
 	String line = "Sorry Unable to translate text!";
 	String[] array;
    	AssetManager assetManager = getAssets();
-   	InputStream in;
-   	try {
-		in = this.getAssets().open("dict.txt");
-		reader = new BufferedReader(new InputStreamReader(in));
+   	InputStream in=null;
+   	Context context = getApplicationContext();
+	try {
+   		in = this.getAssets().open("dict.txt");
 		boolean i = true;
+		reader = new BufferedReader(new InputStreamReader(in));
+		line = reader.readLine();
+		reader = new BufferedReader(new InputStreamReader(in));
 		line = reader.readLine(); 
 		while(line!=null)
 		{	//line = reader.readLine();
@@ -156,20 +160,19 @@ public String readTxt(String recognizedText)
 	      		{
 	      			return array[0];
 	      		}
-	      		
 	      	}
 	      	line=reader.readLine();
 	 
 	   }		
-	} catch (IOException e) {
+   	}catch (IOException e) {
 		// TODO Auto-generated catch block
 		Log.e("translation", "error opening assets", e);
 	}
     	 
-   	return "Sorry unbale to translate!";
+   	return "Sorry unable to translate!";
 }
 	
-	
+	/** Function to copy file to outputstream */
 	private void copyFile(InputStream in, OutputStream out) throws IOException 
 	{
 		byte[] buffer = new byte[1024];
