@@ -144,7 +144,7 @@ public String coCorrect(String recognizedText) // swap vowels
 	StringBuilder builder;
 	String text;
 	String [] c = new String[1000];
-	String [] a ={"[", "_", "]", ";", ":", "!", "@","#","$", "%", "^","&","(",")","/","|","{","}","'"};
+	String [] a ={"[", "_", "]", ";", ":", "!", "@","#","$", "%", "^","&","(",")","/","|","{","}","'","-"};
 	len= recognizedText.length();
     c = recognizedText.split("");
     int clength=c.length;
